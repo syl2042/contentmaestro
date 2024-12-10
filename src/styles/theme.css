@@ -1,0 +1,226 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Couleurs */
+    --color-primary: 43 108 176;    /* #2B6CB0 */
+    --color-secondary: 108 117 125; /* #6C757D */
+    --color-background: 248 249 250; /* #F8F9FA */
+    --color-surface: 255 255 255;    /* #FFFFFF */
+    --color-accent: 237 137 54;     /* #ED8936 */
+    --color-error: 220 38 38;       /* #DC2626 */
+    --color-success: 34 197 94;     /* #22C55E */
+    --color-border: 226 232 240;    /* #E2E8F0 */
+    --color-hover: 243 244 246;     /* #F3F4F6 */
+
+    /* Text Colors */
+    --color-text-primary: 15 23 42;      /* #0F172A */
+    --color-text-secondary: 71 85 105;   /* #475569 */
+    --color-text-placeholder: 148 163 184; /* #94A3B8 */
+    --color-text-inverse: 255 255 255;    /* #FFFFFF */
+
+    /* Spacing */
+    --spacing-xs: 0.5rem;    /* 8px */
+    --spacing-sm: 1rem;      /* 16px */
+    --spacing-md: 1.5rem;    /* 24px */
+    --spacing-lg: 2rem;      /* 32px */
+    --spacing-xl: 2.5rem;    /* 40px */
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    --shadow-hover: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+
+    /* Border Radius */
+    --radius-sm: 0.375rem;   /* 6px */
+    --radius-md: 0.5rem;     /* 8px */
+    --radius-lg: 0.75rem;    /* 12px */
+    --radius-xl: 1rem;       /* 16px */
+
+    /* Font Sizes */
+    --font-size-xs: 0.75rem;  /* 12px */
+    --font-size-sm: 0.875rem; /* 14px */
+    --font-size-md: 1rem;     /* 16px */
+    --font-size-lg: 1.125rem; /* 18px */
+    --font-size-xl: 1.25rem;  /* 20px */
+    --font-size-2xl: 1.5rem;  /* 24px */
+    --font-size-3xl: 1.875rem;/* 30px */
+
+    /* Transitions */
+    --transition-all: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-transform: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-opacity: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    --color-background: 15 23 42;      /* #0F172A */
+    --color-surface: 30 41 59;         /* #1E293B */
+    --color-text-primary: 248 250 252; /* #F8FAFC */
+    --color-text-secondary: 203 213 225; /* #CBD5E1 */
+    --color-border: 51 65 85;          /* #334155 */
+    --color-hover: 51 65 85;           /* #334155 */
+  }
+
+  /* Base Styles */
+  body {
+    @apply bg-[rgb(var(--color-background))] text-[rgb(var(--color-text-primary))];
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Heading Styles */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+
+  h1 { @apply text-3xl lg:text-4xl mb-4; }
+  h2 { @apply text-2xl lg:text-3xl mb-3; }
+  h3 { @apply text-xl lg:text-2xl mb-2; }
+  h4 { @apply text-lg lg:text-xl mb-2; }
+
+  /* Focus Styles */
+  :focus-visible {
+    @apply outline-none ring-2 ring-[rgb(var(--color-primary))] ring-offset-2;
+  }
+
+  /* Animation Classes */
+  .animate-in {
+    animation: animate-in 0.3s ease-out;
+  }
+
+  .animate-out {
+    animation: animate-out 0.3s ease-in;
+  }
+
+  @keyframes animate-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes animate-out {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+  }
+}
+
+@layer components {
+  /* Card Styles */
+  .card {
+    @apply bg-[rgb(var(--color-surface))] 
+           border border-[rgb(var(--color-border))] 
+           rounded-lg shadow-sm
+           transition-all duration-200
+           hover:shadow-md
+           p-6 space-y-4;
+  }
+
+  /* Button Styles */
+  .btn {
+    @apply inline-flex items-center justify-center
+           rounded-md px-4 py-2
+           text-sm font-medium
+           transition-colors duration-200
+           focus-visible:outline-none focus-visible:ring-2
+           disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  .btn-primary {
+    @apply bg-[rgb(var(--color-primary))] 
+           text-[rgb(var(--color-text-inverse))]
+           hover:bg-[rgb(var(--color-primary))/90]
+           active:bg-[rgb(var(--color-primary))/95];
+  }
+
+  .btn-secondary {
+    @apply bg-[rgb(var(--color-secondary))] 
+           text-[rgb(var(--color-text-inverse))]
+           hover:bg-[rgb(var(--color-secondary))/90]
+           active:bg-[rgb(var(--color-secondary))/95];
+  }
+
+  /* Input Styles */
+  .input {
+    @apply block w-full rounded-md border border-[rgb(var(--color-border))]
+           bg-[rgb(var(--color-surface))] px-3 py-2
+           text-sm placeholder:text-[rgb(var(--color-text-placeholder))]
+           focus:outline-none focus:ring-2 focus:ring-[rgb(var(--color-primary))]
+           disabled:opacity-50;
+  }
+
+  /* Badge Styles */
+  .badge {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5
+           text-xs font-medium transition-colors duration-200;
+  }
+
+  .badge-primary {
+    @apply bg-[rgb(var(--color-primary))/10] 
+           text-[rgb(var(--color-primary))]
+           ring-1 ring-[rgb(var(--color-primary))/20];
+  }
+
+  /* Section Styles */
+  .section {
+    @apply mb-8;
+  }
+
+  .section-title {
+    @apply text-2xl font-bold mb-4;
+  }
+
+  /* Recommended Badge */
+  .recommended-badge {
+    @apply absolute -top-2 -right-2 px-2 py-1
+           text-xs font-medium rounded-full
+           bg-[rgb(var(--color-primary))] text-[rgb(var(--color-text-inverse))]
+           border border-[rgb(var(--color-surface))]
+           shadow-sm;
+  }
+
+  /* Tag Styles */
+  .tag {
+    @apply inline-flex items-center rounded-full px-3 py-1.5
+           text-xs font-medium
+           transition-all duration-200
+           hover:scale-105;
+  }
+
+  .tag-primary {
+    @apply bg-[rgb(var(--color-primary))/10]
+           text-[rgb(var(--color-primary))]
+           ring-1 ring-[rgb(var(--color-primary))/20];
+  }
+
+  /* Modal Styles */
+  .modal-content {
+    @apply bg-[rgb(var(--color-surface))]
+           border border-[rgb(var(--color-border))]
+           rounded-lg shadow-lg
+           p-6 space-y-6;
+  }
+
+  /* Tooltip Styles */
+  .tooltip {
+    @apply bg-[rgb(var(--color-surface))]
+           border border-[rgb(var(--color-border))]
+           rounded-md shadow-md
+           px-3 py-1.5
+           text-xs;
+  }
+}
